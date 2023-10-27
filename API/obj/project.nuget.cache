@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ReEb9WDVsEIeN8pWdUZDQOds7l4GYDx14JTcpAVlJPmkFoQLLAhrEs2V68NYAZETjWj29cCZGAP1pqIMqbmkrw==",
+  "dgSpecHash": "A+i5dgwGMasvg3y5qJXuOG/wzzKFGSoBpdDQ195cJGEUuHPviNkCfKwEl8fFamWAIADZLQLsIN2DHMWsct/M4Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\ADMIN\\DatingApp\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.13\\microsoft.aspnetcore.authentication.jwtbearer.7.0.13.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.7\\microsoft.aspnetcore.openapi.7.0.7.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",
