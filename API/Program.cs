@@ -1,4 +1,6 @@
 using API.Data;
+using API.Interfaces;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 internal class Program
 {
@@ -12,12 +14,12 @@ internal class Program
         {
             options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
+        builder.Services.AddScoped<ITokenService, TokenService>();
         builder.Services.AddCors();
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-
 
         var app = builder.Build();
 
@@ -26,6 +28,7 @@ internal class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+            
         }
 
         app.UseHttpsRedirection();
