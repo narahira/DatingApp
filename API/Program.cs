@@ -11,7 +11,7 @@ internal class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        
+
 
         // Add services to the container.
         builder.Services.AddDbContext<DataContext>(options =>
@@ -22,9 +22,9 @@ internal class Program
         builder.Services.AddScoped<ITokenService, TokenService>();
         builder.Services.AddCors();
         builder.Services.AddControllers();
-       // builder.Services.AddApplicationServices()
+       // builder.Services.AddApplicationServices();
        // builder.Services.AddIdentityService();
-       
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -36,12 +36,12 @@ internal class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
-            
+
         }
 
         app.UseHttpsRedirection();
 
-        app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+        app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
         app.UseAuthentication();
         app.UseAuthorization();

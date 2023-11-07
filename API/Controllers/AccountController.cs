@@ -10,6 +10,7 @@ using API.DTO;
 using API.Entities;
 using API.Interfaces;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -30,11 +31,11 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await UserExists(registerDto.Name)) return BadRequest("Username is taken");
+            if (await UserExists(registerDto.userName)) return BadRequest("Username is taken");
 
             using var hmac = new HMACSHA512();
             var user = new AppUser{
-                Name = registerDto.Name,
+                Name = registerDto.userName,
                 PasswordHash =hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
                 PasswordSalt =hmac.Key
             };
@@ -42,11 +43,12 @@ namespace API.Controllers
             await _context.SaveChangesAsync();
             return new UserDto
             {
-                Name = user.Name,
+                userName = user.Name,
                 Token = _tokenService.CreateToken(user)
             };
         }    
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<ActionResult<UserDto>> Login (LoginDto loginDto)
         {
             var user = await _context.Users.SingleOrDefaultAsync(x => x.Name == loginDto.userName);
@@ -61,7 +63,7 @@ namespace API.Controllers
             }
              return new UserDto
             {
-                Name = user.Name,
+                userName = user.Name,
                 Token = _tokenService.CreateToken(user)
             };
         }   

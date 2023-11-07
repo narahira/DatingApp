@@ -24,11 +24,11 @@ namespace API.Services
             {
                 new Claim(JwtRegisteredClaimNames.NameId,user.Name)
             };  
-            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha256Signature);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7),
+                Expires = DateTime.Now.AddDays(32),
                 SigningCredentials = creds
             };
             var tokenHandler = new JwtSecurityTokenHandler();

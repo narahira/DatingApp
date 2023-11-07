@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../_services/account.service';
+import { Observable } from 'rxjs';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-navbar',
@@ -7,16 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 model: any ={}
-constructor() {
- 
-  
+
+
+constructor(public accountService: AccountService) {
+ }
+ngOnInit(){
+
 }
-ngOnInit()
-{
-  
-}
+
 login(){
-  console.log(this.model);
+  this.accountService.login(this.model).subscribe(response =>{
+    console.log(response);
+    console.error();
+  })
 }
+logout(){
+  this.accountService.logout();
+}
+
 
 }
